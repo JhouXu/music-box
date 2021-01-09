@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MusicBox</title>
+    <link rel="icon" href="./images/icon.png" />
+    <link rel="stylesheet" href="./css/commonStyle.css" />
+    <link rel="stylesheet" href="./css/iconfont.css" />
+    <link rel="stylesheet/less" href="./css/index.less" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <header>
+          <h1>MusicBox</h1>
+          <div class="search">
+            <input type="text" placeholder="搜索" v-model="searchName" @keyup.enter="searchMusic" />
+            <a url="javascript:void(0)" class="iconfont icon-fangdajing"></a>
+          </div>
+        </header>
+        <article>
+          <div class="musicList sidebar">
+            <h4>搜索结果</h4>
+            <ul>
+              <li v-for="item in musicList">
+                <i class="iconfont icon-bofang" @click="searchMusicUrl(item.id, item.name)"></i>
+                <span class="musicName">{{ item.name }}</span>
+                <i class="iconfont icon-mv" v-show="item.mvid" @click="searchMvUrl(item.mvid)"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="musicPlayAnimation">
+            <div class="play" :class="{animation:isPlaying}">
+              <img class="playcerBar" src="./images/player_bar.png" />
+              <div class="disc">
+                <img :src="picUrl" />
+              </div>
+            </div>
+            <div class="playMusic">
+              <span v-text="playName"></span>
+            </div>
+          </div>
+          <div class="musicComments sidebar">
+            <h4>热门留言</h4>
+            <ul>
+              <li v-for="item in commentList">
+                <img :src="item.user.avatarUrl" />
+                <div>
+                  <p class="userName">{{ item.user.nickname }}</p>
+                  <p class="comments">{{ item.content }}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <footer>
+          <audio @play="play" @pause="pause" :src="musicUrl" autoplay="autoplay" controls="controls"></audio>
+        </footer>
+      </div>
+      <div class="video" :class="{mvDisplay: mvDisplay}" @click="clearMv">
+        <video :src="mvUrl" autoplay="autoplay" controls="controls"></video>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.js"></script>
+  <script src="./js/index.js"></script>
+</html>

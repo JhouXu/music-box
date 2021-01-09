@@ -1,0 +1,246 @@
+@theme-color: #11a2de;
+@transparent-bg: rgba(255, 255, 255, 0.5);
+@padding: 10px;
+
+@font-face {
+  font-family: 'CreatineYouthRegular';
+  src: url('../font/CreatineYouthRegular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  .sidebar {
+    overflow-y: auto;
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 0;
+  }
+
+  audio,
+  video {
+    outline: none;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  body::before {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../images/bg.jpg) no-repeat fixed center center / cover;
+    filter: blur(20px);
+    content: '';
+  }
+}
+
+#app {
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 550px;
+    background-color: @transparent-bg;
+    border-radius: 5px;
+    overflow: hidden;
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: @theme-color;
+
+      h1 {
+        font: 40px/35px 'CreatineYouthRegular';
+        color: #fff;
+      }
+
+      .search {
+        position: relative;
+
+        input[type='text'] {
+          padding-left: 20px;
+          width: 250px;
+          height: 35px;
+          background: @transparent-bg;
+          border-radius: 40px;
+          border: none;
+          outline: none;
+        }
+        a {
+          position: absolute;
+          right: 10px;
+          top: 5px;
+        }
+      }
+    }
+
+    article {
+      i {
+        cursor: pointer;
+      }
+
+      display: flex;
+      height: 405px;
+      margin-bottom: 10px;
+      overflow: hidden;
+
+      .musicList,
+      .musicComments {
+        height: 100%;
+        margin: @padding;
+        overflow: auto;
+      }
+
+      .musicList {
+        width: 25%;
+        ul li {
+          display: flex;
+          align-items: center;
+          position: relative;
+          padding: @padding;
+
+          span {
+            padding: 0 10px 0 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          i:last-child {
+            position: absolute;
+            right: 5px;
+          }
+        }
+        ul li:hover {
+          background: rgba(255, 255, 255, 0.51);
+        }
+      }
+
+      .musicPlayAnimation {
+        position: relative;
+        width: 45%;
+
+        .play {
+          .playcerBar {
+            position: absolute;
+            top: 0;
+            left: 48%;
+            z-index: 100;
+            transform-origin: 0% 0%;
+            transform: rotate(-30deg);
+            transition: 0.5s;
+          }
+          .disc {
+            margin: 15% auto 10%;
+            width: 254px;
+            height: 254px;
+
+            img {
+              width: 254px;
+              height: 254px;
+              border-radius: 100%;
+              object-fit: cover;
+            }
+          }
+          .disc::before {
+            display: inline-block;
+            position: absolute;
+            width: 254px;
+            height: 254px;
+            background: url(../images/disc.png) no-repeat;
+            content: '';
+          }
+        }
+        .animation {
+          .playcerBar {
+            transform: rotate(0deg);
+            transition: 0.5s;
+          }
+          .disc {
+            animation: rotate 5s linear 0s infinite normal;
+          }
+        }
+        @keyframes rotate {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        .playMusic {
+          overflow: hidden;
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+
+      .musicComments {
+        width: 30%;
+
+        ul li {
+          display: flex;
+          align-items: flex-start;
+
+          img {
+            padding: @padding;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+          }
+
+          div {
+            padding-top: @padding;
+
+            .userName {
+              font-weight: 600;
+            }
+            .comments {
+              padding-top: 5px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+
+    footer {
+      // 去除audio标签的默认边距
+      font-size: 0;
+      audio {
+        width: 100%;
+        height: 60px;
+        border-radius: 0;
+        background: #f1f3f4;
+      }
+    }
+  }
+  .video {
+    display: none;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000000aa;
+    font-size: 0;
+    z-index: 100;
+
+    video {
+      margin: 0 auto;
+      width: 800px;
+    }
+  }
+  .mvDisplay {
+    display: flex;
+  }
+}
