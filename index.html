@@ -16,7 +16,7 @@
           <h1>MusicBox</h1>
           <div class="search">
             <input type="text" placeholder="搜索" v-model="searchName" @keyup.enter="searchMusic" />
-            <a url="javascript:void(0)" class="iconfont icon-fangdajing"></a>
+            <a @click="searchMusic" url="javascript:void(0)" class="iconfont icon-fangdajing"></a>
           </div>
         </header>
         <article>
