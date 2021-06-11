@@ -9,7 +9,7 @@
 网站技术说明：
 
 - HTML5
-- CSS3
+- Less
 - Vue.js
 - [网易云音乐 NodeJS 版 API](https://neteasecloudmusicapi.js.org/#/)
 
