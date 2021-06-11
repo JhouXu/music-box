@@ -62,9 +62,15 @@ music-box
 
 - 首页
 
+[init.png](https://jhouxu.github.io/music-box/images/img-md/init.png)
+
 - 音乐搜索播放页
 
+[music-search.png](https://jhouxu.github.io/music-box/images/img-md/music-search.png)
+
 - mv 播放页
+
+[mv-play.png](https://jhouxu.github.io/music-box/images/img-md/mv-play.png)
 
 ## 参与贡献
 
