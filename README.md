@@ -79,6 +79,7 @@ music-box
 ## 关于
 
 - github 仓库地址：https://github.com/JhouXu/music-box
+
 - github 演示地址：https://jhouxu.github.io/music-box/
 
 本仓库音乐播放器主要通过Less+Vue.js得以实现，其中图片、视频等素材均来源于网络，仅供学习使用。谢谢观看。
